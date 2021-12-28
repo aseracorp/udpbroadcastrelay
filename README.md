@@ -1,6 +1,6 @@
 # udpbroadcastrelay docker container
 
-This docker container implements <https://github.com/marjohn56/udpbroadcastrelay>. This container was built to fix Chromecast Speaker group visibility from Android and iOS devices on seperate VLANs for UDM/P devices.
+This docker container implements <https://github.com/deonvdw/udpbroadcastrelay> which is a fork of https://github.com/marjohn56/udpbroadcastrelay that adds SSDP/DIAL support. This container was built to fix Chromecast Speaker group visibility from Android and iOS devices on seperate VLANs for UDM/P devices.
 
 
 ## Setup

@@ -7,7 +7,7 @@ RUN apt-get update \
   && apt-get install -y gcc make git \
   && mkdir src \
   && cd src \
-  && git clone --depth 1 https://github.com/marjohn56/udpbroadcastrelay.git \
+  && git clone --depth 1 https://github.com/deonvdw/udpbroadcastrelay.git \
   && cd udpbroadcastrelay \
   && make \
   && cp udpbroadcastrelay /udpbroadcastrelay \
