@@ -5,7 +5,7 @@ This docker container implements <https://github.com/deonvdw/udpbroadcastrelay> 
 
 ## Setup
 
-1. Find and kill any avahi processes as it will block this tool from running because avahi also runs on TCP port 5353
-1. Find interfaces for both LAN and IOT(network where cast devices are), usually br0 and brXX (ie br42)
+1. Find and kill any avahi processes as it will block this tool from running because avahi also runs on TCP port 5353.
+1. Find interfaces for both LAN and IOT(network where cast devices are), usually br0 and brXX (ie br42).
 1. Run `podman run -d --network=host --restart=always -e VLAN1="br0" -e VLAN2="br42" --name udpbroadcastrelay stonith/udpbroadcastrelay` (replace the VLAN# env vars with your own)
 
