@@ -1,4 +1,26 @@
-#!/bin/ash
+#!/bin/bash
 echo `date` "starting udpbroadcastrelay"
-echo "Using vlan interfaces:" $VLAN1 $VLAN2
-/udpbroadcastrelay --id 1 --port 5353 --dev $VLAN1 --dev $VLAN2 --multicast 224.0.0.251 -s 1.1.1.3
+
+
+
+echo `date` "building interface list"
+
+interfaces=$(ip a | awk '/MULTICAST/{gsub(/[@:].*$/, "", $2); print $2}')
+ilist=""
+
+for i in $interfaces
+do
+    echo `date` "interface discovered: ${i}"
+    ilist="${ilist} --dev ${i}"
+done
+
+i=1
+rule=RULE$i
+while [ -n "${!rule}" ]; do
+    echo `date` "start task  with following settings: --id $i$ilist ${!rule}"
+    ./udpbroadcastrelay -f --id $i$ilist ${!rule}
+    ((i++))
+    rule=RULE$i
+done
+
+sleep infinity

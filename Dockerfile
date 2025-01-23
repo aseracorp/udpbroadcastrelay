@@ -4,7 +4,7 @@ FROM ubuntu
 
 # Install any needed packages
 RUN apt-get update \
-  && apt-get install -y gcc make git \
+  && apt-get install -y gcc make git iproute2 bash\
   && mkdir src \
   && cd src \
   && git clone --depth 1 https://github.com/deonvdw/udpbroadcastrelay.git \
@@ -20,9 +20,9 @@ RUN apt-get update \
 COPY start.sh /start.sh
 
 # Define environment variable
-ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-ENV LANG C.UTF-8
-ENV TZ Canada/Pacific
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV LANG=C.UTF-8
+ENV TZ=Canada/Pacific
 
 # Run when the container launches
-CMD ["/bin/sh", "/start.sh"]
+CMD ["/bin/bash", "/start.sh"]
